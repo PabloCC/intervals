@@ -68,7 +68,7 @@ public class IntervalTest {
   @Test
   public void intersectTest() {
     Interval interval = this.intervalBuilder.open(left.getEquals()).open(right.getEquals()).build();
-    Interval interval2 = this.intervalBuilder.open(left.getEquals()).open(right.getEquals()).build();
+    Interval interval2 = new IntervalBuilder().open(left.getEquals()).open(right.getEquals()).build();
 
     assertTrue(interval.intersect(interval2));
   }

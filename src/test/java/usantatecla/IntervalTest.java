@@ -1,10 +1,9 @@
 package usantatecla;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class IntervalTest {
   
@@ -66,4 +65,8 @@ public class IntervalTest {
     assertFalse(interval.include(right.getGreater()));
   }
 
+  @Test
+  public void intersectTest() {
+    fail();
+  }
 }

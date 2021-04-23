@@ -82,9 +82,17 @@ public class IntervalTest {
   }
 
   @Test
-  public void distinctIntervalsIntersectTest() {
+  public void distinctIntervalsMinIncludeIntersectTest() {
     Interval interval = this.intervalBuilder.open(left.getEquals()).open(right.getEquals()).build();
     Interval interval2 = new IntervalBuilder().open(1).open(12).build();
+
+    assertTrue(interval.intersect(interval2));
+  }
+
+  @Test
+  public void distinctIntervalsMaxIncludeIntersectTest() {
+    Interval interval = this.intervalBuilder.open(left.getEquals()).open(right.getEquals()).build();
+    Interval interval2 = new IntervalBuilder().open(-8).open(1).build();
 
     assertTrue(interval.intersect(interval2));
   }

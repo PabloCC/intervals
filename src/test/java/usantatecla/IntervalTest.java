@@ -80,4 +80,12 @@ public class IntervalTest {
 
     assertFalse(interval.intersect(interval2));
   }
+
+  @Test
+  public void distinctIntervalsIntersectTest() {
+    Interval interval = this.intervalBuilder.open(left.getEquals()).open(right.getEquals()).build();
+    Interval interval2 = new IntervalBuilder().open(1).open(12).build();
+
+    assertTrue(interval.intersect(interval2));
+  }
 }

@@ -19,12 +19,13 @@ public class Interval {
 		boolean isDistinctEndpoints = this.max.value != interval.min.value && this.min.value != interval.max.value;
 		boolean highEndpointClosedIntersect = this.max.value == interval.min.value && this.include(interval.min.value) && interval.include(this.max.value);
 		boolean lowEndpointClosedIntersect = this.min.value == interval.max.value &&  this.include(interval.max.value) && interval.include(this.min.value);
+		boolean intervalsIntersect = this.equals(interval) || this.include(interval.min.value) || this.include(interval.max.value) || interval.include(this.min.value) || interval.include(this.max.value);
 
-		return (
-				(isDistinctEndpoints || highEndpointClosedIntersect || lowEndpointClosedIntersect)
-						&& (this.equals(interval) || this.include(interval.min.value) || this.include(interval.max.value)
-				|| interval.include(this.min.value)
-				|| interval.include(this.max.value)));
+		if (highEndpointClosedIntersect || lowEndpointClosedIntersect) {
+			return true;
+		} else {
+			return isDistinctEndpoints && intervalsIntersect;
+		}
 	}
 
 	@Override

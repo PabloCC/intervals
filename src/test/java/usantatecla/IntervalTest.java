@@ -96,4 +96,12 @@ public class IntervalTest {
 
     assertTrue(interval.intersect(interval2));
   }
+
+  @Test
+  public void firstIntervalIncludeInSecondIntersectTest() {
+    Interval interval = this.intervalBuilder.open(left.getEquals()).open(right.getEquals()).build();
+    Interval interval2 = new IntervalBuilder().open(-8).open(10).build();
+
+    assertTrue(interval.intersect(interval2));
+  }
 }

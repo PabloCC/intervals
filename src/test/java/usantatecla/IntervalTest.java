@@ -114,7 +114,7 @@ public class IntervalTest {
   }
 
   @Test
-  public void intervalsClosedAndClosedEndpointIntersectTest() {
+  public void intervalsClosedHighEndpointIntersectTest() {
     Interval interval = this.intervalBuilder.open(left.getEquals()).closed(right.getEquals()).build();
     Interval interval2 = new IntervalBuilder().closed(right.getEquals()).open(10).build();
 
@@ -127,5 +127,13 @@ public class IntervalTest {
     Interval interval2 = new IntervalBuilder().open(-10).closed(left.getEquals()).build();
 
     assertFalse(interval.intersect(interval2));
+  }
+
+  @Test
+  public void intervalsClosedLowEndpointIntersectTest() {
+    Interval interval = this.intervalBuilder.closed(left.getEquals()).open(right.getEquals()).build();
+    Interval interval2 = new IntervalBuilder().open(-10).closed(left.getEquals()).build();
+
+    assertTrue(interval.intersect(interval2));
   }
 }

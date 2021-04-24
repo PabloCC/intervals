@@ -16,11 +16,13 @@ public class Interval {
 	}
 
 	public boolean intersect(Interval interval) {
+		boolean isDistinctEndpoints = this.max.value != interval.min.value && this.min.value != interval.max.value;
 		boolean highEndpointClosedIntersect = this.max.value == interval.min.value && this.include(interval.min.value) && interval.include(this.max.value);
-		return ((this.max.value != interval.min.value || highEndpointClosedIntersect) &&
-				(this.equals(interval) ||
-				this.include(interval.min.value)
-				|| this.include(interval.max.value)
+
+		return (
+				(isDistinctEndpoints || highEndpointClosedIntersect)
+						&& (this.equals(interval) || this.include(interval.min.value)
+					|| this.include(interval.max.value)
 				|| interval.include(this.min.value)
 				|| interval.include(this.max.value)));
 	}
